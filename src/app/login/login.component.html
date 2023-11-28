@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card mt-5">
+        <div class="card-header">
+          Login
+        </div>
+        <div class="card-body">
+          <p [hidden]="errorMessage.length == 0" class="error-message">{{ errorMessage }}</p>
+          <form>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" placeholder="Enter your email" name="email" #userEmail required>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" placeholder="Enter your password" name="password"
+                #userPassword required>
+            </div>
+            <button type="button" class="btn login-btn"
+              (click)="signIn(userEmail.value, userPassword.value)">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

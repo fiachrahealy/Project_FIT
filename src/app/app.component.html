@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" href="#">Project FIT</a>
+  <div [ngClass]="loggedIn ? 'collapse navbar-collapse justify-content-end' : 'd-none'" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" (click)="openRecordWeightDialog()">Record Weight</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="openRecordMealDialog()">Record Meal</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="openCreateMealDialog()">Create Meal</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="openSettingsDialog()">Settings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="authService.signOut()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="d-none d-lg-block desktop-view">
+  <router-outlet (activate)="changeOfRoutes()"></router-outlet>
+</div>
+<div class="d-lg-none mobile-view">
+  <p class="mobile-text">Sorry! The application is not available on mobile devices yet!</p>
+</div>

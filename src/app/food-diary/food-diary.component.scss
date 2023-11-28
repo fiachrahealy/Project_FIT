@@ -1,0 +1,39 @@
+.card {
+  height: 80vh;
+}
+
+.diary-entries {
+  max-height: 40vh;
+  overflow-y: auto;
+}
+
+.cal-goal {
+  font-size: 1.5vh;
+}
+
+.diary-entry-card {
+  height: 15vh;
+  flex-direction: row;
+  margin-top: 2vh;
+}
+
+.diary-entry-image {
+  width: 30%;
+}
+
+.diary-entry-title {
+  font-size: 2vh;
+}
+
+.diary-entry-table td {
+  font-size: 1vh;
+}
+
+.diary-entry-table th {
+  font-size: 1vh;
+}
+
+.spinner {
+  margin: auto;
+  margin-top: 30vh !important;
+}

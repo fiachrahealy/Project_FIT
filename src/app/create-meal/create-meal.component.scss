@@ -1,0 +1,74 @@
+.card {
+  height: 80vh;
+}
+
+.meal-card {
+  height: 35vh;
+}
+
+.item-card {
+  height: 40vh;
+}
+
+.search-field {
+  width: 80%;
+}
+
+.search-results {
+  margin-top: 2vh;
+}
+
+.store-col {
+  text-align: center;
+  height: 65vh;
+}
+
+.store-col-border {
+  border-right: thin #d2d2d2 solid;
+}
+
+.item-title {
+  font-size: 1vh;
+  padding: 1vh;
+}
+
+.item-image {
+  height: 10vh;
+  width: 10vh;
+  cursor: pointer;
+}
+
+.nut-info-col {
+  padding-left: 1vh;
+  padding-right: 1vh;
+  padding-bottom: 1vh;
+}
+
+.reset-btn {
+  margin-right: 1vh;
+}
+
+.spinner {
+  margin: auto;
+  margin-top: 20vh !important;
+}
+
+.diary-entry-table td {
+  font-size: 1vh;
+}
+
+.diary-entry-table th {
+  font-size: 1vh;
+}
+
+.item-area {
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  max-height: 62vh;
+  overflow-y: auto;
+}
+
+.spinner-no-margin {
+  margin: auto;
+  margin-top: 7vh !important;
+}

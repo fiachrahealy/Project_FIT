@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="card-header">
+    Settings
+  </div>
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted">Personal Information</h6>
+    <form #settingsForm="ngForm">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-4">
+            <input [ngModel]="currentUser.firstName" type="text" class="form-control" placeholder="First Name"
+              name="firstName" #firstName required ngModel>
+          </div>
+          <div class="col-sm-4">
+            <input [ngModel]="currentUser.lastName" type="text" class="form-control" placeholder="Last Name"
+              name="lastName" #lastName required ngModel>
+          </div>
+          <div class="col-sm-4">
+            <input [ngModel]="currentUser.height" type="number" class="form-control" placeholder="Height (cm)"
+              name="height" #height required ngModel>
+          </div>
+        </div>
+      </div>
+    </form>
+    <h6 class="card-subtitle mb-2 text-muted nut-goal-text">Nutrional Goals</h6>
+    <form #addItemForm="ngForm">
+      <div class="form-group nut-info-group">
+        <div class="row nut-info-row">
+          <div class="col nut-info-col">
+            <input [ngModel]="currentUser.nutritionalGoals.calories" type="number" class="form-control"
+              placeholder="Calories (kcal)" name="itemCal" #userCal required ngModel>
+          </div>
+          <div class="col nut-info-col">
+            <input [ngModel]="currentUser.nutritionalGoals.protein" type="number" class="form-control"
+              placeholder="Protein (g)" name="itemPro" #userPro require ngModel>
+          </div>
+          <div class="col nut-info-col">
+            <input [ngModel]="currentUser.nutritionalGoals.fat" type="number" class="form-control" placeholder="Fat (g)"
+              name="itemFat" #userFat required ngModel>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col nut-info-col">
+            <input [ngModel]="currentUser.nutritionalGoals.saturates" type="number" class="form-control"
+              placeholder="Saturates (g)" name="itemSat" #userSat required ngModel>
+          </div>
+          <div class="col nut-info-col">
+            <input [ngModel]="currentUser.nutritionalGoals.sugars" type="number" class="form-control"
+              placeholder="Sugar (g)" name="itemSug" #userSug required ngModel>
+          </div>
+          <div class="col nut-info-col">
+            <input [ngModel]="currentUser.nutritionalGoals.salt" type="number" class="form-control"
+              placeholder="Salt (g)" name="itemSal" #userSal required ngModel>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn reset-btn float-end" [disabled]="!settingsForm.form.valid"
+        (click)="updateUser(firstName.value, lastName.value, height.value, userCal.value, userPro.value, userFat.value, userSat.value, userSug.value, userSal.value)">Update
+        Settings</button>
+    </form>
+  </div>
+</div>

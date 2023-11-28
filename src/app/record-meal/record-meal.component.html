@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card-header">
+    Meal Diary Entry
+  </div>
+  <div class="card-body">
+    <form #recordMealForm="ngForm">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-6">
+            <input type="date" class="form-control" name="date" #date required ngModel>
+          </div>
+          <div class="col-sm-6">
+            <select class="form-select" name="meal" #meal required ngModel>
+              <option *ngFor="let meal of meals" value="{{ meal.ID }}">{{ meal.title }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+    <form #addItemForm="ngForm">
+      <button type="button" class="btn reset-btn float-end" [disabled]="!recordMealForm.form.valid"
+        (click)="createFoodDiaryEntry(meal.value, date.value)">Record Meal</button>
+    </form>
+  </div>
+</div>

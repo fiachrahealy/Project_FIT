@@ -1,0 +1,202 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="row">
+        <div class="col">
+          <div class="card item-card">
+            <div class="card-header">
+              Add Item
+            </div>
+            <div class="card-body">
+              <div [hidden]="!addItemLoading" class="loading">
+                <mat-spinner color="black" class="spinner-no-margin"></mat-spinner>
+              </div>
+              <form [hidden]="addItemLoading" #addItemForm="ngForm">
+                <div class="form-group">
+                  <input id="itemTitle" [disabled]="itemPopulated" type="text" class="form-control"
+                    placeholder="Item Name" name="itemName" #itemTitle required ngModel>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-7">
+                      <input (input)="updatePopulatedItem()" id="itemAmount" type="number" class="form-control"
+                        placeholder="Amount" name="itemAmount" #itemAmount required ngModel>
+                    </div>
+                    <div class="col-sm-5">
+                      <input id="itemUnit" [disabled]="itemPopulated" type="text" class="form-control"
+                        placeholder="Unit" name="itemUnit" #itemUnit required ngModel>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group nut-info-group">
+                  <div class="row nut-info-row">
+                    <div class="col nut-info-col">
+                      <input id="itemCal" [disabled]="itemPopulated" type="number" class="form-control"
+                        placeholder="Cal" name="itemCal" #itemCal required ngModel>
+                    </div>
+                    <div class="col nut-info-col">
+                      <input id="itemPro" [disabled]="itemPopulated" type="number" class="form-control"
+                        placeholder="Pro" name="itemPro" #itemPro require ngModel>
+                    </div>
+                    <div class="col nut-info-col">
+                      <input id="itemFat" [disabled]="itemPopulated" type="number" class="form-control"
+                        placeholder="Fat" name="itemFat" #itemFat required ngModel>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col nut-info-col">
+                      <input id="itemSat" [disabled]="itemPopulated" type="number" class="form-control"
+                        placeholder="Sat" name="itemSat" #itemSat required ngModel>
+                    </div>
+                    <div class="col nut-info-col">
+                      <input id="itemSug" [disabled]="itemPopulated" type="number" class="form-control"
+                        placeholder="Sug" name="itemSug" #itemSug required ngModel>
+                    </div>
+                    <div class="col nut-info-col">
+                      <input id="itemSal" [disabled]="itemPopulated" type="number" class="form-control"
+                        placeholder="Sal" name="itemSal" #itemSal required ngModel>
+                    </div>
+                  </div>
+                </div>
+                <button type="button" class="btn float-end"
+                  (click)="addItem(itemTitle.value, itemAmount.value, itemUnit.value, itemCal.value, itemPro.value, itemFat.value, itemSat.value, itemSug.value, itemSal.value); addItemForm.resetForm(); unPopulateItemForm()"
+                  [disabled]="!addItemForm.form.valid && !itemPopulated">Add Item</button>
+                <button type="button" class="btn reset-btn float-end"
+                  (click)="addItemForm.resetForm(); unPopulateItemForm()">Reset</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="card meal-card">
+            <div class="card-header">
+              Create Meal
+            </div>
+            <div class="card-body">
+              <div [hidden]="!createMealLoading" class="loading">
+                <mat-spinner color="black" class="spinner-no-margin"></mat-spinner>
+              </div>
+              <form #createMealForm="ngForm" [hidden]="createMealLoading">
+                <div class="form-group">
+                  <input name="mealTitle" id="mealTitle" type="text" class="form-control" placeholder="Meal Name"
+                    #mealTitle required ngModel>
+                </div>
+                <div class="form-group">
+                  <input name="mealImage" id="mealImage" class="form-control" type="file" #mealImage required ngModel>
+                </div>
+                <div class="form-group">
+                  <table class="table diary-entry-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">CAL</th>
+                        <th scope="col">PRO</th>
+                        <th scope="col">FAT</th>
+                        <th scope="col">SAT</th>
+                        <th scope="col">SUG</th>
+                        <th scope="col">SAL</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{{ totalMealCalories.calories }}</td>
+                        <td>{{ totalMealCalories.protein }}g</td>
+                        <td>{{ totalMealCalories.fat }}g</td>
+                        <td>{{ totalMealCalories.saturates }}g</td>
+                        <td>{{ totalMealCalories.sugars }}g</td>
+                        <td>{{ totalMealCalories.salt }}g</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <button type="button" class="btn float-end" (click)="createMeal(mealTitle.value, mealImage.files![0]);"
+                  [disabled]="!createMealForm.form.valid || itemInfos.length == 0">Save Meal</button>
+                <button type="button" class="btn reset-btn float-end"
+                  (click)="createMealForm.resetForm(); addItemForm.resetForm(); unPopulateItemForm(); emptyItems();">Reset</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <div class="row">
+        <div class="col-sm">
+          <div class="card" style="width: 18rem;">
+            <div class="card-header">
+              Item Search
+            </div>
+            <div class="card-body">
+              <form #searchItemForm="ngForm">
+                <div class="row">
+                  <div class="col-sm-10">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" #searchQuery>
+                  </div>
+                  <div class="col-sm-2">
+                    <button class="btn" type="button" (click)="searchForItems(searchQuery.value)">Search</button>
+                  </div>
+                </div>
+              </form>
+              <div class="search-results">
+                <div class="row">
+                  <div class="col store-col store-col-border">
+                    Tesco
+                    <div class="item-area">
+                      <div class="row">
+                        <div *ngFor="let item of tescoItems" class="col-sm-6">
+                          <div class="item-container">
+                            <img (click)="populateTescoItem(item.productRef)" class="item-image"
+                              src="{{ item.imageURL }}">
+                            <h5 class="item-title">{{ item.title }}</h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div [hidden]="tescoItems.length > 0 || !initialSearch" class="loading">
+                      <mat-spinner color="black" class="spinner"></mat-spinner>
+                    </div>
+                  </div>
+                  <div class="col store-col store-col-border">
+                    Dunnes Stores
+                    <div class="item-area">
+                      <div class="row">
+                        <div *ngFor="let item of dunnesItems" class="col-sm-6">
+                          <div class="item-container">
+                            <img (click)="populateDunnesItem(item.productRef)" class="item-image"
+                              src="{{ item.imageURL }}">
+                            <h5 class="item-title">{{ item.title }}</h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div [hidden]="dunnesItems.length > 0 || !initialSearch" class="loading">
+                      <mat-spinner color="black" class="spinner"></mat-spinner>
+                    </div>
+                  </div>
+                  <div class="col store-col store-col-border">
+                    Aldi
+                    <div class="item-area">
+                      <div class="row">
+                        <div *ngFor="let item of aldiItems" class="col-sm-6">
+                          <div class="item-container">
+                            <img (click)="populateAldiItem(item.productRef)" class="item-image"
+                              src="{{ item.imageURL }}">
+                            <h5 class="item-title">{{ item.title }}</h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div [hidden]="aldiItems.length > 0 || !initialSearch" class="loading">
+                      <mat-spinner color="black" class="spinner"></mat-spinner>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+:root {
+  --green: #277650;
+  --red: #BC1313;
+  --orange: #CD5500;
+}
+
+button.btn {
+  background-color: black;
+  border-color: black;
+  color: white;
+}
+
+button.btn:hover,
+button.btn:focus,
+button.btn:active {
+  background-color: black;
+  border-color: black;
+  color: white
+}
+
+.form-group {
+  margin-bottom: 1.5vh;
+}
+
+.card {
+  width: 100% !important;
+  margin-top: 5vh;
+}
+
+.card-title {
+  font-size: 5vh;
+}
+
+.card-header {
+  font-size: 2vh;
+}
+
+.progress {
+  margin-bottom: 2vh !important;
+}
+
+.card-subtitle {
+  margin-bottom: 2vh !important;
+}
+
+.mat-mdc-progress-spinner {
+  --mdc-circular-progress-active-indicator-color: black;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.error-message {
+  color: var(--red);
+}

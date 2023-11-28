@@ -1,0 +1,27 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    Weight Graph
+  </div>
+  <div [hidden]="!weightGraphLoading" class="loading">
+    <mat-spinner color="black" class="spinner"></mat-spinner>
+  </div>
+  <div [hidden]="weightGraphLoading" class="card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <h5 class="card-title">{{ currentUserWeight }}kg</h5>
+          <h6 class="card-subtitle mb-2 text-muted">current weight</h6>
+          <h5 class="card-title">{{ currentUserBMI }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">current BMI</h6>
+          <h5 class="card-title">{{ currentUserWeightLost }}kg</h5>
+          <h6 class="card-subtitle mb-2 text-muted">weight lost to date</h6>
+        </div>
+        <div class="col-sm-9">
+          <div id="divChart">
+            <canvas id="canvas"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
