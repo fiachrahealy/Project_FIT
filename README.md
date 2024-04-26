@@ -31,7 +31,7 @@ Before running the application, the following software must be installed:
 
 Before running the application, the following environment variables must be set, these variables should be stored in a `.env` file at the project root:
 
-| **Environemnt Variable**          | **Description**                                     |
+| **Environment Variable**          | **Description**                                     |
 |-----------------------------------|-----------------------------------------------------|
 | **CLOUDINARY_API_KEY**            | The API key for Cloudinary.                         |
 | **CLOUDINARY_API_SECRET**         | The API secret for Cloudinary.                      |
